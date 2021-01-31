@@ -32,7 +32,7 @@ namespace LampotilaMuunnin
         private void btnConvert_Click(object sender, EventArgs e)
         {
             double startingTemp, resultTemp;
-            // sta
+            // double value is converted to string
             startingTemp = double.Parse(textBox1.Text);
             // Converting Celcius to Fahrenheit
             if (comboBox1.Text == "Celcius" && comboBox2.Text == "Fahrenheit")
@@ -70,6 +70,7 @@ namespace LampotilaMuunnin
                 resultTemp = ((startingTemp + 459.67) / 1.8);
                 txtBoxAnswer.Text = resultTemp.ToString("0.0" + " K");
             }
+            
         }
     }
 }
