@@ -31,46 +31,59 @@ namespace LampotilaMuunnin
 
         private void btnConvert_Click(object sender, EventArgs e)
         {
-            double startingTemp, resultTemp;
-            // double value is converted to string
-            startingTemp = double.Parse(textBox1.Text);
-            // Converting Celcius to Fahrenheit
-            if (comboBox1.Text == "Celcius" && comboBox2.Text == "Fahrenheit")
+            // Check if there is a value to convert
+            if (textBox1.TextLength >= 1)
             {
-                resultTemp = ((startingTemp * 1.8) + 32);
-                txtBoxAnswer.Text = resultTemp.ToString("0.0" + " °F");
+                double startingTemp, resultTemp;
+                // double value is converted to string
+
+                //txtBoxAnswer.Text = "Invalid variable.";
+                startingTemp = double.Parse(textBox1.Text);
+
+                // Converting Celcius to Fahrenheit
+                if (comboBox1.Text == "Celcius" && comboBox2.Text == "Fahrenheit")
+                {
+                    resultTemp = ((startingTemp * 1.8) + 32);
+                    txtBoxAnswer.Text = resultTemp.ToString("0.0" + " °F");
+                }
+                // Converting Kelvin to Fahrenheit
+                if (comboBox1.Text == "Kelvin" && comboBox2.Text == "Fahrenheit")
+                {
+                    resultTemp = ((startingTemp * 1.8) - 459.67);
+                    txtBoxAnswer.Text = resultTemp.ToString("0.0" + " °F");
+                }
+                // Converting Fahrenheit to Celcius
+                if (comboBox1.Text == "Fahrenheit" && comboBox2.Text == "Celcius")
+                {
+                    resultTemp = ((startingTemp - 32) / 1.8);
+                    txtBoxAnswer.Text = resultTemp.ToString("0.0" + " °C");
+                }
+                // Converting Kelvin to Celcius
+                if (comboBox1.Text == "Kelvin" && comboBox2.Text == "Celcius")
+                {
+                    resultTemp = (startingTemp - 273.15);
+                    txtBoxAnswer.Text = resultTemp.ToString("0.0" + " °C");
+                }
+                // Converting Celcius to Kelvin
+                if (comboBox1.Text == "Celcius" && comboBox2.Text == "Kelvin")
+                {
+                    resultTemp = (startingTemp + 273.15);
+                    txtBoxAnswer.Text = resultTemp.ToString("0.0" + " K");
+                }
+                // Converting Fahrenheit to Kelvin
+                if (comboBox1.Text == "Fahrenheit" && comboBox2.Text == "Kelvin")
+                {
+                    resultTemp = ((startingTemp + 459.67) / 1.8);
+                    txtBoxAnswer.Text = resultTemp.ToString("0.0" + " K");
+                }
+
             }
-            // Converting Kelvin to Fahrenheit
-            if (comboBox1.Text == "Kelvin" && comboBox2.Text == "Fahrenheit")
+            // If there is no value to convert let user know about it.
+            else
             {
-                resultTemp = ((startingTemp * 1.8) - 459.67);
-                txtBoxAnswer.Text = resultTemp.ToString("0.0" + " °F");
+                txtBoxAnswer.Text = "Insert a temperature reading";
             }
-            // Converting Fahrenheit to Celcius
-            if (comboBox1.Text == "Fahrenheit" && comboBox2.Text == "Celcius")
-            {
-                resultTemp = ((startingTemp - 32) / 1.8);
-                txtBoxAnswer.Text = resultTemp.ToString("0.0" + " °C");
-            }
-            // Converting Kelvin to Celcius
-            if (comboBox1.Text == "Kelvin" && comboBox2.Text == "Celcius")
-            {
-                resultTemp = (startingTemp - 273.15);
-                txtBoxAnswer.Text = resultTemp.ToString("0.0" + " °C");
-            }
-            // Converting Celcius to Kelvin
-            if (comboBox1.Text == "Celcius" && comboBox2.Text == "Kelvin")
-            {
-                resultTemp = (startingTemp + 273.15);
-                txtBoxAnswer.Text = resultTemp.ToString("0.0" + " K");
-            }
-            // Converting Fahrenheit to Kelvin
-            if (comboBox1.Text == "Fahrenheit" && comboBox2.Text == "Kelvin")
-            {
-                resultTemp = ((startingTemp + 459.67) / 1.8);
-                txtBoxAnswer.Text = resultTemp.ToString("0.0" + " K");
-            }
-            
+
         }
     }
 }
